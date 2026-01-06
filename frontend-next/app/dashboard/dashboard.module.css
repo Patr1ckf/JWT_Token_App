@@ -1,6 +1,7 @@
 .page {
   background: #f7f7f7;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 /* HEADER */
@@ -46,7 +47,7 @@
   background: white;
   border-radius: 18px;
   padding: 28px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2 18px 0 rgba(0, 0, 0, 0.25);
 }
 
 .cardTitle {
@@ -59,41 +60,102 @@
 /* SEARCH */
 .search {
   width: 100%;
-  padding: 12px 16px;
-  border-radius: 12px;
+  height: 52px;
+  padding: 0 18px 0 48px; /* miejsce na ikonę */
+  border-radius: 16px;
   border: none;
-  background: #f2f2f2;
+  background: #f3f4f6;
+  font-size: 16px;
+  color: #111827;
+  border: 2px solid #e5e7eb;
+}
+
+.search:focus {
+  outline: none;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+}
+
+.search::placeholder {
+  color: #d1d5db;
+  font-weight: 500;
+}
+
+.searchWrapper {
+  position: relative;
+  width: 100%;
   margin-bottom: 24px;
 }
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #d1d5db;
+  pointer-events: none;
+}
+
 
 /* DOCUMENT ITEM */
 .doc {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 16px;
-  border-radius: 14px;
-  background: #fafafa;
-  margin-bottom: 14px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: white;
+  margin-bottom: 16px;
+  box-shadow: 0 2 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+.docLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.docBar {
+  width: 4px;
+  height: 48px;
+  background: #16a34a;
+  border-radius: 2px;
+}
+
+.docIcon {
+  color: #0ea5e9; /* niebieski jak na obrazku */
+}
+
+.docInfo {
+  display: flex;
+  flex-direction: column;
 }
 
 .docName {
   font-weight: 600;
+  font-size: 15px;
+  color: #000000;
 }
 
 .docMeta {
   font-size: 12px;
-  color: #777;
+  color: #9ca3af;
+  margin-top: 2px;
+  line-height: 1.4;
 }
 
 .download {
   background: #16a34a;
   border: none;
   color: white;
-  padding: 10px 14px;
-  border-radius: 10px;
+  width: 60px;
+  height: 44px;
+  border-radius: 12px;
   cursor: pointer;
+  font-size: 18px;
+  display: grid;
+  place-items: center;
 }
 
 /* TOKEN */
