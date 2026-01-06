@@ -5,9 +5,6 @@ from functools import wraps
 
 app = Flask(__name__)
 
-# =========================
-# KONFIGURACJA JWT
-# =========================
 SECRET_KEY = "SUPERTAJNYFIGIELKOWYKLUCZ"
 ALGORITHM = "HS256"
 
@@ -44,8 +41,21 @@ def generate_jwt(user):
     return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
 
 # =========================
-# DEKORATOR AUTORYZACJI JWT
+# LOGOWANIE
 # =========================
+@app.route("/login", methods=["POST"])
+def login():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    user = users.get(username)
+    if not user or user["password"] != password:
+        return jsonify({"error": "Nieprawidlowe dane logowania"}), 401
+
+    token = generate_jwt(user)
+    return jsonify({"token": token})
+
 def token_required(required_role=None):
     def decorator(f):
         @wraps(f)
@@ -71,22 +81,6 @@ def token_required(required_role=None):
             return f(payload, *args, **kwargs)
         return wrapper
     return decorator
-
-# =========================
-# LOGOWANIE
-# =========================
-@app.route("/login", methods=["POST"])
-def login():
-    data = request.get_json()
-    username = data.get("username")
-    password = data.get("password")
-
-    user = users.get(username)
-    if not user or user["password"] != password:
-        return jsonify({"error": "Nieprawidlowe dane logowania"}), 401
-
-    token = generate_jwt(user)
-    return jsonify({"token": token})
 
 # =================================================
 # DOSTĘP DO PLIKÓW W ZALEŻNOŚCI OD ROLI UŻYTKOWNIKA
@@ -115,7 +109,7 @@ def documents(user_data):
 @token_required(required_role="admin")
 def admin_panel(user_data):
     return jsonify({
-        "message": "Dostęp tylko dla administratora",
+        "message": "Dostep tylko dla administratora",
         "user": user_data["username"]
     })
 
