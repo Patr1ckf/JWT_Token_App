@@ -1,0 +1,104 @@
+.page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f7f7f7;
+}
+
+/* LEWA STRONA */
+.left {
+  background: linear-gradient(135deg, #1f2f3a, #243542);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.illustration {
+  width: 80%;
+  height: 80%;
+  background-image: url("/login-illustration.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* PRAWA STRONA */
+.right {
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  width: 420px;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  color: #16a34a;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 32px;
+}
+
+.label {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #f2f2f2;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+.input:focus {
+  outline: 2px solid #16a34a;
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.footer {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 16px;
+  color: #777;
+}
+
+.footer a {
+  color: #16a34a;
+  text-decoration: none;
+  font-weight: 500;
+}

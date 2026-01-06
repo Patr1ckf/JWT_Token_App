@@ -1,0 +1,140 @@
+.page {
+  background: #f7f7f7;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+  background: #243542;
+  color: white;
+  padding: 18px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerTitle {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.headerButton {
+  background: #16a34a;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* CONTENT */
+.content {
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.cardTitle {
+  color: #16a34a;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* SEARCH */
+.search {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: none;
+  background: #f2f2f2;
+  margin-bottom: 24px;
+}
+
+/* DOCUMENT ITEM */
+.doc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #fafafa;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.docName {
+  font-weight: 600;
+}
+
+.docMeta {
+  font-size: 12px;
+  color: #777;
+}
+
+.download {
+  background: #16a34a;
+  border: none;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* TOKEN */
+.tokenBox {
+  background: #243542;
+  color: white;
+  border-radius: 14px;
+  padding: 18px;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.tokenLabel {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+/* MODAL */
+.modalBg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+  width: 420px;
+  text-align: center;
+}
+
+.modal button {
+  margin-top: 16px;
+  padding: 10px 18px;
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
