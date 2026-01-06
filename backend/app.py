@@ -90,7 +90,8 @@ def token_required(required_role=None):
 def documents(user_data):
     if user_data["role"] == "admin":
         documents = [
-            "BUS__25Z_prezentacja1_Topczewska_Figiel.pptx"
+            "BUS__25Z_prezentacja1_Topczewska_Figiel.pptx",
+             "BUS__25Z_sprawozdanie1_Topczewska_Figiel.pdf"
         ]
     else:
         documents = [
