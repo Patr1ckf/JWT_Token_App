@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./dashboard.module.css";
+import { FileText } from "lucide-react";
+import { Download } from "lucide-react";
 
 type DocumentItem = {
   id: number;
@@ -66,20 +68,48 @@ export default function DashboardPage() {
         <div className={styles.card}>
           <div className={styles.cardTitle}>Your documents</div>
 
-          <input
-            className={styles.search}
-            placeholder="Search documents"
-          />
+          <div className={styles.searchWrapper}>
+            <svg
+              className={styles.searchIcon}
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <line x1="16.65" y1="16.65" x2="21" y2="21" />
+            </svg>
+
+            <input
+              className={styles.search}
+              placeholder="Search documents"
+            />
+          </div>
 
           {documents.map((doc) => (
             <div key={doc.id} className={styles.doc}>
-              <div>
-                <div className={styles.docName}>{doc.name}</div>
-                <div className={styles.docMeta}>
-                  Date: {doc.date} • Size: {doc.size}
+              <div className={styles.docLeft}>
+                <div className={styles.docBar} />
+                <div className={styles.docIcon}>
+                  <FileText size={28} strokeWidth={2} />
+                </div>
+                <div className={styles.docInfo}>
+                  <div className={styles.docName}>{doc.name}</div>
+                  <div className={styles.docMeta}>
+                    Date: {doc.date}
+                    <br />
+                    Size: {doc.size}
+                  </div>
                 </div>
               </div>
-              <button className={styles.download}>⬇</button>
+              <button className={styles.download} aria-label="Download">
+                <Download size={20} strokeWidth={2.2} />
+              </button>
+
             </div>
           ))}
         </div>
