@@ -103,17 +103,6 @@ def documents(user_data):
         "documents": documents
     })
 
-# ==================================
-# ENDPOINT DOSTĘPNY TYLKO DLA ADMINA
-# ==================================
-@app.route("/admin", methods=["GET"])
-@token_required(required_role="admin")
-def admin_panel(user_data):
-    return jsonify({
-        "message": "Dostep tylko dla administratora",
-        "user": user_data["username"]
-    })
-
 # =========================
 # START SERWERA
 # =========================
