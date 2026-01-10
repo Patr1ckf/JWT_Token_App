@@ -40,6 +40,8 @@
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 32px;
+
+  align-items: start;
 }
 
 /* CARDS */
@@ -47,7 +49,15 @@
   background: white;
   border-radius: 18px;
   padding: 28px;
-  box-shadow: 0 2 18px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cardDOC {
+  background: white;
+  border-radius: 18px;
+  padding: 28px;
+  padding-bottom: 10px;
+  box-shadow: 0 2px 18px 0 rgba(0, 0, 0, 0.25);
 }
 
 .cardTitle {
@@ -58,16 +68,20 @@
 }
 
 /* SEARCH */
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
 .search {
   width: 100%;
   height: 52px;
-  padding: 0 18px 0 48px; /* miejsce na ikonę */
+  padding: 0 18px 0 48px;
   border-radius: 16px;
-  border: none;
+  border: 2px solid #e5e7eb;
   background: #f3f4f6;
   font-size: 16px;
-  color: #111827;
-  border: 2px solid #e5e7eb;
 }
 
 .search:focus {
@@ -81,22 +95,13 @@
   font-weight: 500;
 }
 
-.searchWrapper {
-  position: relative;
-  width: 100%;
-  margin-bottom: 24px;
-}
-
 .searchIcon {
   position: absolute;
   left: 16px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 18px;
   color: #d1d5db;
-  pointer-events: none;
 }
-
 
 /* DOCUMENT ITEM */
 .doc {
@@ -107,7 +112,7 @@
   border-radius: 16px;
   background: white;
   margin-bottom: 16px;
-  box-shadow: 0 2 18px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 18px 0 rgba(0, 0, 0, 0.25);
 }
 
 .docLeft {
@@ -124,7 +129,7 @@
 }
 
 .docIcon {
-  color: #0ea5e9; /* niebieski jak na obrazku */
+  color: #0ea5e9;
 }
 
 .docInfo {
@@ -135,7 +140,7 @@
 .docName {
   font-weight: 600;
   font-size: 15px;
-  color: #000000;
+  color: #000;
 }
 
 .docMeta {
@@ -145,6 +150,7 @@
   line-height: 1.4;
 }
 
+/* DOWNLOAD BUTTON */
 .download {
   background: #16a34a;
   border: none;
@@ -153,9 +159,19 @@
   height: 44px;
   border-radius: 12px;
   cursor: pointer;
-  font-size: 18px;
   display: grid;
   place-items: center;
+  transition: all 0.2s ease;
+}
+
+.download:hover:not(:disabled) {
+  background: #15803d;
+}
+
+.download:disabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
 }
 
 /* TOKEN */
@@ -166,37 +182,94 @@
   padding: 18px;
   font-family: monospace;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.6;
+  white-space: pre-wrap;
 }
 
 .tokenLabel {
   color: #22c55e;
   font-weight: 600;
+  margin-top: 12px;
 }
 
-/* MODAL */
+/* MODAL BACKDROP */
 .modalBg {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
   display: grid;
   place-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.25s ease;
 }
 
+/* MODAL */
 .modal {
   background: white;
-  padding: 28px;
-  border-radius: 16px;
+  padding: 32px 36px;
+  border-radius: 18px;
   width: 420px;
   text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+  animation: scaleIn 0.25s ease;
+}
+
+.modal h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.modal.success h2 {
+  color: #16a34a;
+}
+
+.modal.expired h2 {
+  color: #dc2626;
+}
+
+.modal p {
+  font-size: 15px;
+  color: #4b5563;
 }
 
 .modal button {
-  margin-top: 16px;
-  padding: 10px 18px;
+  margin-top: 18px;
+  padding: 10px 22px;
   background: #16a34a;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 999px;
+  font-weight: 500;
   cursor: pointer;
 }
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modalSuccess {
+  color: #16a34a; /* zielony */
+}
+
+.modalError {
+  color: #dc2626; /* czerwony */
+}
+

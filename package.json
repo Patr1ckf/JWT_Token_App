@@ -1,0 +1,13 @@
+{
+  "name": "jwt-token-app",
+  "private": true,
+  "description": "Monorepo: Flask backend + Next.js frontend (JWT auth)",
+  "scripts": {
+    "dev": "concurrently -n BACKEND,FRONTEND \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && py app.py",
+    "dev:frontend": "cd frontend-next && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

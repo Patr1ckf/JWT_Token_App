@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./login.module.css";
+import { apiFetch } from "@/app/lib/api";
+
 
 export default function LoginPage() {
   const router = useRouter();
@@ -11,17 +13,31 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setLoading(true);
+  async function handleSubmit(e: React.FormEvent) {
+  e.preventDefault();
+  setLoading(true);
 
-    // FAKE LOGIN – udajemy backend
-    setTimeout(() => {
-      localStorage.setItem("access_token", "FAKE_JWT_TOKEN");
-      localStorage.setItem("user_name", "Martha");
-      router.push("/dashboard");
-    }, 800);
+  try {
+    const data = await apiFetch("/login", {
+      method: "POST",
+      auth: false,
+      body: JSON.stringify({
+        username: email,   // backend oczekuje "username"
+        password: password,
+      }),
+    });
+
+    localStorage.setItem("access_token", data.token);
+    localStorage.setItem("user_name", data.user.username);
+    localStorage.setItem("user_role", data.user.role);
+
+    router.push("/dashboard");
+  } catch (err: any) {
+    alert(err.message);
+  } finally {
+    setLoading(false);
   }
+}
 
   return (
     <div className={styles.page}>
