@@ -4,11 +4,11 @@ Projekt przedstawia prosty system umożliwiający bezpieczny dostęp do dokument
 
 1. Przed uruchomienie aplikacji należy dodać odpowiednie klucze do pliku .env znajdujacego się w folderze backend.
 
-Zaprojektowany serwer może wykorzystywać RSA lub HMAC z funkcją skrótu SHA-256. Wybrany algorytm(HS256 lub RS256) należy podać w pliku .env znajdującym się w folderze backend.
+    Zaprojektowany serwer może wykorzystywać RSA lub HMAC z funkcją skrótu SHA-256. Wybrany algorytm(HS256 lub RS256) należy podać w pliku .env znajdującym się w folderze backend.
 
-SECRET_KEY - klucz używany w HS256 (HMAC z funkcją skrótu SHA-256), czyli symetrycznym algorytmie kryptograficznym, bazującym na jednym kluczu do podpisu i weryfikacji integralności danych. 
+    SECRET_KEY - klucz używany w HS256 (HMAC z funkcją skrótu SHA-256), czyli symetrycznym algorytmie kryptograficznym, bazującym na jednym kluczu do podpisu i weryfikacji integralności danych. 
 
-PRIVATE_KEY i PUBLIC_KEY - klucze używane w RS256 (RSA z funkcją skrótu SHA-256), czyli asymetrycznym algorytmnie kryptograficznym, bazującym na parze kluczy (klucz publiczny i prywatny), które umożliwiają bezpieczną wymianę danych.
+    PRIVATE_KEY i PUBLIC_KEY - klucze używane w RS256 (RSA z funkcją skrótu SHA-256), czyli asymetrycznym algorytmnie kryptograficznym, bazującym na parze kluczy (klucz publiczny i prywatny), które umożliwiają bezpieczną wymianę danych.
 
 2. Uruchomienie aplikacji poprzez wywołanie komendy w głównym katalogu aplikacji: npm run dev
 
