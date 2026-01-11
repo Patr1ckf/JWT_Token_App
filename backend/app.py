@@ -4,12 +4,22 @@ import jwt
 from datetime import datetime, timedelta, timezone
 from functools import wraps
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-SECRET_KEY = "SUPERTAJNYFIGIELKOWYKLUCZ"
-ALGORITHM = "HS256"
+# HS256
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+# RS256
+PRIVATE_KEY = os.getenv("PRIVATE_KEY")
+PUBLIC_KEY = os.getenv("PUBLIC_KEY")
+
+ALGORITHM = "HS256" #RS256 lub HS256
+
 JWT_EXPIRE_MINUTES = 1
 
 DOCUMENTS_DIR = "documents"
@@ -56,7 +66,11 @@ def generate_jwt(user):
         "role": user["role"],
         "exp": datetime.now(timezone.utc) + timedelta(minutes=JWT_EXPIRE_MINUTES)
     }
-    return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+
+    if ALGORITHM == "HS256":
+        return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM) # HS256
+    else:
+        return jwt.encode(payload, PRIVATE_KEY, algorithm=ALGORITHM) # RS256
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -90,7 +104,10 @@ def token_required():
                 return jsonify({"error": "Zły format Authorization"}), 401
 
             try:
-                payload = jwt.decode(parts[1], SECRET_KEY, algorithms=[ALGORITHM])
+                if ALGORITHM == "HS256":
+                    payload = jwt.decode(parts[1], SECRET_KEY, algorithms=[ALGORITHM]) # HS256
+                else:
+                    payload = jwt.decode(parts[1], PUBLIC_KEY, algorithms=[ALGORITHM]) # RS256
             except jwt.ExpiredSignatureError:
                 return jsonify({"error": "Token wygasł"}), 401
             except jwt.InvalidTokenError:

@@ -52,6 +52,9 @@ function formatTime(seconds: number) {
   return `${m}:${s.toString().padStart(2, "0")}`;
 }
 
+const chunkString = (str: string, length: number = 64): string[] =>
+  str.match(new RegExp(`.{1,${length}}`, "g")) || [];
+
 /* ================= COMPONENT ================= */
 
 export default function DashboardPage() {
@@ -280,7 +283,11 @@ export default function DashboardPage() {
                 <pre>{decodeJwtPart(payload)}</pre>
 
                 <div className={styles.tokenLabel}>SIGNATURE:</div>
-                <pre>{signature}</pre>
+                <pre className={styles.tokenBox}>
+                  {chunkString(signature, 64).map((chunk, i) => (
+                    <span key={i}>{chunk}{"\n"}</span>
+                  ))}
+                </pre>
 
                 {expiresIn !== null && (
                   <div
