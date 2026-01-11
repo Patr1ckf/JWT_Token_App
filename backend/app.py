@@ -16,10 +16,10 @@ DOCUMENTS_DIR = "documents"
 
 DOCUMENTS = {
     "BUS__25Z_sprawozdanie1.pdf": {
-        "allowed_roles": ["user", "admin"]
+        "allowed_roles": ["admin"]
     },
     "BUS__25Z_prezentacja1.pptx": {
-        "allowed_roles": ["admin"]
+        "allowed_roles": ["user", "admin"]
     },
     "Tematy_projektow.xlsx": {
         "allowed_roles": ["user", "admin"]

@@ -52,12 +52,12 @@ export default function LoginPage() {
           <h1 className={styles.title}>Log in</h1>
           <p className={styles.subtitle}>Access your secure space</p>
 
-          <label className={styles.label}>Email</label>
+          <label className={styles.label}>Username</label>
           <input
             className={styles.input}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="martha.collin@gmail.com"
+            placeholder="martha.collin1"
           />
 
           <label className={styles.label}>Password</label>
@@ -66,7 +66,7 @@ export default function LoginPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="************"
+            placeholder="*********"
           />
 
           <button className={styles.button} disabled={loading}>

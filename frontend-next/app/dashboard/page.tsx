@@ -222,7 +222,7 @@ export default function DashboardPage() {
       <div className={styles.content}>
         {/* DOCUMENTS */}
         <div className={styles.cardDOC}>
-          <div className={styles.cardTitle}>Your documents</div>
+          <div className={styles.cardTitle}>Documents</div>
 
           {documents.map((doc) => {
             const hasAccess = doc.allowedRoles.includes(userRole);

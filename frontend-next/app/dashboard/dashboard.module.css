@@ -34,6 +34,16 @@
   cursor: pointer;
 }
 
+.headerButton:hover {
+  background: #15803d;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
 /* CONTENT */
 .content {
   padding: 40px;
