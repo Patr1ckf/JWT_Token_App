@@ -11,3 +11,5 @@ SECRET_KEY - klucz używany w HS256 (HMAC z funkcją skrótu SHA-256), czyli sym
 PRIVATE_KEY i PUBLIC_KEY - klucze używane w RS256 (RSA z funkcją skrótu SHA-256), czyli asymetrycznym algorytmnie kryptograficznym, bazującym na parze kluczy (klucz publiczny i prywatny), które umożliwiają bezpieczną wymianę danych.
 
 Uruchomienie aplikacji poprzez wywołanie komendy w głównym katalogu aplikacji: npm run dev
+
+W zaprojektowanej aplikacji istnieją dwa typy użytkowników: user mający dostęp do niektórych z udostępnianych plików oraz admin, który ma dostęp do wszystkich udostępnionych plików.

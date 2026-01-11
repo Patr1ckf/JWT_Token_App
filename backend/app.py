@@ -37,8 +37,8 @@ DOCUMENTS = {
 }
 
 users = {
-    "user": {"id": 1, "username": "user", "password": "user123", "role": "user"},
-    "admin": {"id": 2, "username": "admin", "password": "admin123", "role": "admin"},
+    "user": {"id": 1, "username": "user", "password": "user", "role": "user"},
+    "admin": {"id": 2, "username": "admin", "password": "admin", "role": "admin"},
 }
 
 def get_file_metadata(filename):
