@@ -74,8 +74,15 @@ export default function LoginPage() {
           </button>
 
           <div className={styles.footer}>
-            Forgot your password? <a href="#">Click here</a>
+            Forgot your password?{" "}
+            <a
+              href="#"
+              title="Oops… this feature isn’t available yet."
+            >
+              Click here
+            </a>
           </div>
+
         </form>
       </div>
     </div>
